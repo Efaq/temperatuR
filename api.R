@@ -17,9 +17,14 @@ temperaturNuAgent = setRefClass(
       response_get_all_stations = GET(url = "http://api.temperatur.nu/tnu_1.17.php?verbose",
                                       query = list(cli = client_name))
       stop_for_status(response_get_all_stations)
-      stations_list = content(response_get_all_stations,
-                              as = "parsed",
-                              type = "application/json")$stations
+      tryCatch({
+        stations_list = content(response_get_all_stations,
+                                as = "parsed",
+                                type = "application/json")$stations
+      },
+      error = function(c) {
+        stop("Unknown error while trying to extract content from Json response!")
+      })
       fields_of_interest = append(fields_of_interest, indexing_field)
       proto_df = list()
       for (name in fields_of_interest) {
@@ -41,7 +46,16 @@ temperaturNuAgent = setRefClass(
         )
       )
       stop_for_status(response_get_measurements)
-      content_measurement_obj = content(response_get_measurements, as = "parsed", type = "application/json")[["stations"]][[1]]
+      tryCatch({
+        content_measurement_obj = content(response_get_measurements,
+                                          as = "parsed",
+                                          type = "application/json")[["stations"]][[1]]
+      },
+      error = function(c) {
+        stop(
+          "Error while extracting response content. Did you use a valid station id (not name!) and valid date formats (YYYY-mm-dd-HH-ii) and intervals (end date later than start date)?"
+        )
+      })
       station_id = content_measurement_obj[["id"]]
       station_data = content_measurement_obj[["data"]]
       proto_df = list()
