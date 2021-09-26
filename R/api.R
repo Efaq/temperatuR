@@ -1,5 +1,42 @@
-#library(httr)
-
+#'Temperatur.nu API agent
+#'
+#'\code{temperaturNuAgent} takes care of all the dialogue with Temperatur.nu's API.
+#'
+#'\code{temperaturNuAgent} is an RC class. The idea is that all the communication
+#'with Temperatur.nu's API will happen through an object of this class.
+#'Upon creation, the object generates a client name to be able to identify itself
+#'to the API. It is generated automatically through the prefix "temperatuR",
+#'a time-stamp of when the object was created and a random integer.
+#'
+#'\code{getInfoStations()} returns a data.frame where the rows are all id's of
+#'temperature measurement stations registered in Temperatur.ru and the columns
+#'are different information about the stations. You should use id's from this
+#'result to query for temperature measurements.
+#'
+#'\code{getTForStation(station, start_date, end_date)} returns a data.frame with
+#'temperature measurements. Each row contains a date and time and a temperature
+#'in degrees Celsius. Note that, due to how the API works, the granularity of the
+#'results can be per hour or per couple of minutes, depending on how much
+#'the API backend has processed the data. The correct time stamp of a measurement
+#'will always be present together with the temperature itself.
+#'
+#'For calling \code{getTForStation(station, start_date, end_date)}, \code{station}
+#'should be a valid station id, as obtained with \code{getInfoStations()}.
+#'\code{start_date} and \code{end_date} should both follow the format YYYY-mm-dd-HH-ii,
+#'meaning 4 numerical digits for year and 2 numerical digits for month, day, hour and minute,
+#' all those separated by "-". So if you want to set June the 6th, 1523 as the starting
+#' date and January the 12th, 1528 as ending date, both at 9 pm, you would call:
+#' 
+#'\code{getTForStation("station_id_here!", "1523-06-06-21-00", "1528-01-12-21-00")}
+#'
+#'@source
+#'See the official documentation for Temperatur.nu's API at \url{https://www.temperatur.nu/info/api/}
+#'
+#'@importFrom methods new
+#'@importFrom httr GET
+#'@importFrom httr stop_for_status
+#'@importFrom httr content
+#'@export temperaturNuAgent
 temperaturNuAgent = setRefClass(
   Class = "temperaturNuAgent",
   fields = c("client_name"),

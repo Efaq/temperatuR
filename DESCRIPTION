@@ -1,9 +1,11 @@
 Package: temperatuR
 Type: Package
-Title: This package is a non-official wrapper for the Temperatur.nu API.
+Title: This package is a non-official wrapper for the Temperatur.nu API
 Version: 1.0
 Date: 2021-09-26
 Authors@R: c(person("Elisio", "Quintino", email="elife599@student.liu.se", role=c("aut", "cre")),
              person("Carolina", "Rosario", email="carde734@student.liu.se", role=c("aut")))
 Description: This package is a non-official wrapper for the Temperatur.nu API. It does not aim to completely map the API, but to wrap some useful pieces of functionality offered by the API and expose them through easy-to-use methods.
 License: file LICENSE
+RoxygenNote: 7.1.1
+Imports: httr, methods
