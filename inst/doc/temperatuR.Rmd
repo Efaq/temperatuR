@@ -1,0 +1,51 @@
+---
+title: "TemparatuR API vignette"
+author: "Carolina Rosário and Elisio Quintino"
+vignette: >
+  %\VignetteIndexEntry{temperatuR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>" 
+)
+```
+
+
+## Setup
+```{r setup}
+library(temperatuR)
+```
+
+## Usage 
+
+ 
+### Get information for every station using getInfoStations
+
+Here is how we can get information about every station and its latitude (lat), longitude (lon), municipality of the measuring point (kommun), county of the measuring point (lan) and meters above Sea Level(moh). 
+Since there are more than 1500 stations, we will use the function head that will return, by default, the first 6 rows.
+
+```{r}
+agent = temperaturNuAgent()
+info_stations = agent$getInfoStations()
+head(info_stations)
+```
+
+
+### Get temperature information for a specific station using getTForStation
+
+Now, here is how we can get information for a specific station and its measured temperatures in degrees Celsius by date and time. In this function, since we want to access temperature of a specific station in a specific timeline, we have to use as input values for our function a station, a start date and an end date.
+
+As an example, let's use the first shown city in the previous case, **aareavaara**, and some randomly selected dates, like  **"2021-06-06-21-00"** and **"2021-06-07-21-00"**.
+
+```{r}
+info_stations_aareavaara = agent$getTForStation("aareavaara","2021-06-06-21-00","2021-06-07-21-00")
+print(info_stations_aareavaara)
+
+```
+
+
+
