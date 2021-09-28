@@ -102,14 +102,6 @@ temperaturNuAgent = setRefClass(
         proto_df$datetime = append(proto_df$datetime, my_data$datetime)
         proto_df$temperatur = append(proto_df$temperatur, as.double(my_data$temperatur))
         
-        #teste extra
-        if(length(setdiff(station_id, getTForStation[1])) != 0)
-        {
-          stop(
-            "Error while extracting response content. Did you use a valid station id ?"
-          )
-        }
-        #teste extra 
       }
       return(data.frame(proto_df))
     }
