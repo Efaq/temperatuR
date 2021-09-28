@@ -1,7 +1,5 @@
-# temperatuR
+# temperatuR - Non-official implementation of Temperatur.nu's API in R
 [![Build Status](https://app.travis-ci.com/Efaq/temperatuR.svg?branch=main)](https://app.travis-ci.com/Efaq/temperatuR)
-
-Non-official implementation of Temperatur.nu's API in R.
 
 For questions, contact:
 
