@@ -29,7 +29,7 @@ test_that("class getTForStation function is correct", {
 })
 
 
-test_that("internal structure of getInfoStation function output is correct", {
+test_that("internal structure of getTForStation function output is correct", {
   info_place <- agent$getTForStation("aareavaara","2015-06-06-21-00", "2016-06-07-21-00")
   
   attrib_infspecific<-c("datetime","temperatur")
