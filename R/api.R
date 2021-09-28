@@ -101,6 +101,7 @@ temperaturNuAgent = setRefClass(
       for (my_data in station_data) {
         proto_df$datetime = append(proto_df$datetime, my_data$datetime)
         proto_df$temperatur = append(proto_df$temperatur, as.double(my_data$temperatur))
+        
       }
       return(data.frame(proto_df))
     }
