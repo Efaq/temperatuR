@@ -9,3 +9,9 @@ Description: This package is a non-official wrapper for the Temperatur.nu API. I
 License: file LICENSE
 RoxygenNote: 7.1.1
 Imports: httr, methods
+Suggests: 
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

@@ -1,9 +1,9 @@
 ---
-title: "TemparatuR API vignette"
+title: "TemperatuR API vignette"
 author: "Carolina Rosário and Elisio Quintino"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{TemparatuR_vignette}
+  %\VignetteIndexEntry{TemperatuR_vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
