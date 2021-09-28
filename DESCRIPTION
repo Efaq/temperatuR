@@ -8,4 +8,5 @@ Authors@R: c(person("Elisio", "Quintino", email="elife599@student.liu.se", role=
 Description: This package is a non-official wrapper for the Temperatur.nu API. It does not aim to completely map the API, but to wrap some useful pieces of functionality offered by the API and expose them through easy-to-use methods.
 License: file LICENSE
 RoxygenNote: 7.1.1
+Suggests: testthat (>= 3.0.0)
 Imports: httr, methods
