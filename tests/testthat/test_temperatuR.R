@@ -2,6 +2,11 @@
 agent = temperaturNuAgent()
 
 
+test_that("temperaturNuAgent creates a client name when accessing the API", {
+  expect_true(length(agent$client_name)!=0)
+})
+
+
 test_that("class getInfoStation function is correct", {
   inf_stations  <- agent$getInfoStations()
   
@@ -35,14 +40,11 @@ test_that("internal structure of getInfoStation function output is correct", {
 
 
 
-test_that("internal structure of getInfoStation function output is correct", {
-  info_place <- agent$getTForStation("aareavaara","2015-06-06-21-00", "2016-06-07-21-00")
+test_that("getTForStation function is returning an empty dataframe when inserting an inexistent station id", {
+  info_place <- agent$getTForStation("abcd","2015-06-06-21-00", "2016-06-07-21-00")
   
-  attrib_infspecific<-c("datetime","temperatur")
-  expect_equal(attributes(info_place)[[1]],attrib_infspecific  )
-  
+  expect_true(nrow(info_place)==0)
 })
-
 
 
 
@@ -59,7 +61,9 @@ test_that("Error messages are returned for erronous input in the getTForStation 
   input_error <-c("aareavaara","2016-06-06-21-00","2015-06-06-21-00")
   expect_error(agent$getTForStation(input_error))
   
-  input_error <-c("abcd","2015-06-06-21-00","2016-06-06-21-00")
+  input_error <-c("aareavaara","2016-06-06-21-00")
   expect_error(agent$getTForStation(input_error))
+  
+  
 })
 
