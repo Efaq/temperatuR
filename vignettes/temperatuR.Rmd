@@ -1,5 +1,5 @@
 ---
-title: "TemparatuR API vignette"
+title: "temperatuR vignette"
 author: "Carolina Rosário and Elisio Quintino"
 vignette: >
   %\VignetteIndexEntry{temperatuR}
